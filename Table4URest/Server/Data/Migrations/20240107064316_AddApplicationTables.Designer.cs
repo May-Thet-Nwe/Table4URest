@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Table4URest.Server.Data;
 
@@ -11,9 +12,11 @@ using Table4URest.Server.Data;
 namespace Table4URest.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240107064316_AddApplicationTables")]
+    partial class AddApplicationTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,26 +434,6 @@ namespace Table4URest.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LocationFilters");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5347),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5363),
-                            PostalCode = 520824,
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5366),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5368),
-                            PostalCode = 460218,
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("Table4URest.Shared.Domain.PriceFilter", b =>
@@ -479,35 +462,6 @@ namespace Table4URest.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PriceFilters");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6363),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6365),
-                            PriceRange = "Budget",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6367),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6368),
-                            PriceRange = "Normal",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6371),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6372),
-                            PriceRange = "Fancy",
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("Table4URest.Shared.Domain.Reservation", b =>
@@ -684,38 +638,6 @@ namespace Table4URest.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ServeFilters");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5989),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5990),
-                            ServeRange = "Breakfast",
-                            ServeTime = 0,
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5993),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5994),
-                            ServeRange = "Lunch",
-                            ServeTime = 0,
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5997),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5998),
-                            ServeRange = "Dinner",
-                            ServeTime = 0,
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("Table4URest.Shared.Domain.Staff", b =>
