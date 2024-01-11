@@ -4,7 +4,7 @@ using Table4URest.Shared;
 
 namespace Table4URest.Server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

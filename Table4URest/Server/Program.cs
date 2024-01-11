@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Table4URest.Server.Data;
 using Table4URest.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using Table4URest.Server.IRepository;
+using Table4URest.Server.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,8 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
