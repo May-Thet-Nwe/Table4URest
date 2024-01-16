@@ -23,8 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Restaurants\" />
-    <Folder Include="Pages\Reviews\" />
     <Folder Include="Pages\Staffs\" />
     <Folder Include="Pages\Reservations\" />
   </ItemGroup>

@@ -29,7 +29,7 @@ namespace Table4URest.Server.Controllers
         //public async Task<ActionResult<IEnumerable<LocationFilter>>> GetLocationFilters()
         public async Task<IActionResult> GetRestaurants()
         {
-            var restaurants = await _unitOfWork.Restaurants.GetAll();
+            var restaurants = await _unitOfWork.Restaurants.GetAll(includes: q=>q.Include(x=>x.LocationFilter).Include(x=>x.PriceFilter).Include(x=>x.ServeFilter));
             return Ok(restaurants);
         }
 
