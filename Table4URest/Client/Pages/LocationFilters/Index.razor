@@ -1,0 +1,66 @@
+﻿@page "/locationfilters/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class="card-title"> Location</h3>
+<br />
+
+@if (LocationFilters == null)
+{
+    <div class="alert alert-info"> Loading Location...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Postal Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var locationfilter in LocationFilters)
+            {
+                <tr>
+                    <td>@locationfilter.PostalCode</td>
+                    
+                    <td>
+                        <a href="/locationfilters/view/@locationfilter.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/locationfilters/edit/@locationfilter.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(locationfilter.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<LocationFilter>? LocationFilters;
+
+    protected async override Task OnInitializedAsync()
+    {
+        LocationFilters = await _client.GetFromJsonAsync<List<LocationFilter>>($"{Endpoints.LocationFiltersEndpoint}");
+    }
+
+    async Task Delete(int locationfilterId)
+    {
+        if (LocationFilters != null)
+        {
+            var locationfilter = LocationFilters.First(q => q.Id == locationfilterId);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {locationfilter.PostalCode}?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.LocationFiltersEndpoint}/{locationfilterId}");
+                await OnInitializedAsync();
+            }
+        }
+    }
+}
