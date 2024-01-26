@@ -11,9 +11,9 @@ namespace Table4URest.Shared.Domain
         public int AdultNum { get; set; }
         public int ChildNum { get; set; }
         public DateTime DateTime { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
         public virtual Customer? Customer { get; set; }
-        public int RestaurantID { get; set; }
+        public int RestaurantId { get; set; }
         public virtual Restaurant? Restaurant { get; set; }
         
     }

@@ -3,12 +3,18 @@
 @inject IJSRuntime js
 @attribute [Authorize]
 
-<h3 class="card-title"> Location</h3>
+<h3 class="card-title"> Locations</h3>
 <br />
 
+<a href="/locationfilters/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create Postal Code
+</a>
+<br />
+<br />
 @if (LocationFilters == null)
 {
-    <div class="alert alert-info"> Loading Location...</div>
+    <div class="alert alert-info"> Loading Locations...</div>
 }
 else
 {

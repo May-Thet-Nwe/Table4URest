@@ -1,0 +1,98 @@
+﻿@page "/reservations/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Reservations</h3>
+<hr />
+<br />
+
+<EditForm Model="@reservation" OnValidSubmit="CreateReservation">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Customer: </label>
+
+        <div>
+            <InputSelect @bind-Value="reservation.CustomerId" class="form-control">
+                <option value="">-- Select Customer --</option>
+                @if (Customers != null)
+                {
+                    foreach (var customer in Customers)
+                    {
+                        <option value="@customer.Id">@customer.Name - @customer.Email</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => reservation.CustomerId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Restaurant: </label>
+
+        <div>
+            <InputSelect @bind-Value="reservation.RestaurantId" class="form-control">
+                <option value="">-- Select Restaurant --</option>
+                @if (Restaurants != null)
+                {
+                    foreach (var restaurant in Restaurants)
+                    {
+                        <option value="@restaurant.Id">@restaurant.Name - @restaurant.Address - @restaurant.ServeFilter.ServeRange</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => reservation.RestaurantId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Adult Number:</label>
+        <div>
+            <InputNumber @bind-Value="@reservation.AdultNum" class="form-control" />
+            <ValidationMessage For="@(()=> reservation.AdultNum)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Children Number:</label>
+        <div>
+            <InputNumber @bind-Value="@reservation.ChildNum" class="form-control" />
+            <ValidationMessage For="@(()=> reservation.ChildNum)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Date Time: </label>
+        <div>
+            <InputDate @bind-Value="@reservation.DateTime" class=" form-control" />
+            <ValidationMessage For="@(() => reservation.DateTime)" />
+        </div>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Reservation
+    </button>
+</EditForm>
+
+@code {
+    Reservation reservation = new Reservation();
+
+    private IList<Restaurant>? Restaurants;
+    private IList<Customer>? Customers;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
+        Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
+    }
+
+    private async Task CreateReservation()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ReservationsEndpoint, reservation);
+        _navManager.NavigateTo("/reservations/");
+    }
+}

@@ -1,0 +1,83 @@
+﻿@page "/reservations/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class="card-title">Restaurant Reservations</h3>
+<br />
+
+<a href="/reservations/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create Reservation
+</a>
+@if (Reservations == null)
+{
+    <div class="alert alert-info">Loading Reservations...</div>
+}
+else
+{
+    <table class=" table table-responsive">
+        <thead>
+            <tr>
+                <th>Reservation Id</th>
+                <th>Customer</th>
+                <th>Restaurant</th>
+                <th>Adult No.</th>
+                <th>Children No.</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var reservation in Reservations)
+            {
+                <tr>
+                    <td>@reservation.Id</td>
+                    <td>@reservation.Customer.Name</td>
+                    <td>@reservation.Restaurant.Name</td>
+                    <td>@reservation.AdultNum</td>
+                    <td>@reservation.ChildNum</td>
+                    <td>@reservation.DateCreated.Date.ToString("dd MMMM yyyy")</td>
+                    
+                    <td>
+                        <a href="/reservations/view/@reservation.Id" class=" btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/reservations/edit/@reservation.Id" class=" btn btn-warning">
+                            <span class=" oi oi-pencil"></span>
+                        </a>
+                        <button class=" btn btn-danger" @onclick="@(() =>Delete(reservation.Id))">
+                            <span class=" oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Reservation>? Reservations;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Reservations = await _client.GetFromJsonAsync<List<Reservation>>($"{Endpoints.ReservationsEndpoint}");
+    }
+
+    async Task Delete(int reservationId)
+    {
+        if (Reservations != null)
+        {
+            var reservation = Reservations.First(q => q.Id == reservationId);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {reservation.Id}?");
+
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.ReservationsEndpoint}/{reservationId}");
+                await OnInitializedAsync();
+            }
+        }
+    }
+}
+

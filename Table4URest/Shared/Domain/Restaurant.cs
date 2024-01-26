@@ -11,13 +11,13 @@ namespace Table4URest.Shared.Domain
         public string? Name { get; set; }
         public string? Address { get; set; }
         public int Contact { get; set; }    
-        public string? PriceRange { get; set; }
+        public int PriceFilterId { get; set; }
         public virtual PriceFilter? PriceFilter { get; set; }
-        public int PostalCode { get; set; }
+        public int LocationFilterId { get; set; }
         public virtual LocationFilter? LocationFilter { get; set; }
-        public string? ServeRange { get; set; }
+        public int ServeFilterId { get; set; }
         public virtual ServeFilter? ServeFilter { get; set; }
-        public virtual List<Reservation>? Reservations { get; set; }
+        public virtual ICollection<Reservation>? Reservations { get; set; }
 
     }
 }

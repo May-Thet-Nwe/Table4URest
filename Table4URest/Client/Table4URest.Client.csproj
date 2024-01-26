@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Reviews\Create.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.14" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.14" />
@@ -23,8 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Staffs\" />
-    <Folder Include="Pages\Reservations\" />
+    <UpToDateCheckInput Remove="Pages\Reviews\Create.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Reviews\Create.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Reviews\Create.razor" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,48 @@
+﻿@page "/staffs/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+
+<h3 class="card-title">Create New Staff</h3>
+<hr />
+<br />
+
+<EditForm Model="@staff" OnValidSubmit="CreateStaff">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label>Name:</label>
+        <div>
+            <InputText @bind-Value="@staff.Name" class="form-control" />
+            <ValidationMessage For="@(()=> staff.Name)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Position: </label>
+        <div>
+            <InputSelect @bind-Value="@staff.Position" class="form-control">
+                <option value="">Select Position</option>
+                <option value="Manager">Manager</option>
+                <option value="Liaison Officer">Liaison Officer</option>
+                <option value="Reservationist">Reservationist</option>
+            </InputSelect>
+            <ValidationMessage For="@(() => staff.Position)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Staff
+    </button>
+</EditForm>
+
+@code {
+    Staff staff = new Staff();
+
+
+
+    private async Task CreateStaff()
+    {
+        await _client.PostAsJsonAsync(Endpoints.StaffsEndpoint, staff);
+        _navManager.NavigateTo("/staffs/");
+    }
+}

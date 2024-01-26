@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Table4URest.Server.Data;
 
 #nullable disable
 
-namespace Table4URest.Server.Data.Migrations
+namespace Table4URest.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240126064631_newdb")]
+    partial class newdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -437,8 +440,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5347),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5363),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8014),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8025),
                             PostalCode = 520824,
                             UpdatedBy = "System"
                         },
@@ -446,8 +449,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5366),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5368),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8027),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8027),
                             PostalCode = 460218,
                             UpdatedBy = "System"
                         });
@@ -485,8 +488,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6363),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6365),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8574),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8574),
                             PriceRange = "Budget",
                             UpdatedBy = "System"
                         },
@@ -494,8 +497,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6367),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6368),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8575),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8576),
                             PriceRange = "Normal",
                             UpdatedBy = "System"
                         },
@@ -503,8 +506,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6371),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(6372),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8577),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8578),
                             PriceRange = "Fancy",
                             UpdatedBy = "System"
                         });
@@ -527,7 +530,7 @@ namespace Table4URest.Server.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
@@ -539,7 +542,7 @@ namespace Table4URest.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RestaurantID")
+                    b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ReviewId")
@@ -550,9 +553,9 @@ namespace Table4URest.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerId");
 
-                    b.HasIndex("RestaurantID");
+                    b.HasIndex("RestaurantId");
 
                     b.HasIndex("ReviewId");
 
@@ -582,26 +585,17 @@ namespace Table4URest.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LocationFilterId")
+                    b.Property<int>("LocationFilterId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PostalCode")
+                    b.Property<int>("PriceFilterId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PriceFilterId")
+                    b.Property<int>("ServeFilterId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PriceRange")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ServeFilterId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ServeRange")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -628,7 +622,7 @@ namespace Table4URest.Server.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
@@ -640,7 +634,7 @@ namespace Table4URest.Server.Data.Migrations
                     b.Property<string>("Reviews")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StaffID")
+                    b.Property<int>("StaffId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -648,9 +642,9 @@ namespace Table4URest.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerId");
 
-                    b.HasIndex("StaffID");
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Reviews");
                 });
@@ -690,8 +684,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5989),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5990),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8393),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8394),
                             ServeRange = "Breakfast",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -700,8 +694,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5993),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5994),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8395),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8396),
                             ServeRange = "Lunch",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -710,8 +704,8 @@ namespace Table4URest.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5997),
-                            DateUpdated = new DateTime(2024, 1, 10, 15, 48, 21, 642, DateTimeKind.Local).AddTicks(5998),
+                            DateCreated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8397),
+                            DateUpdated = new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8398),
                             ServeRange = "Dinner",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -809,13 +803,13 @@ namespace Table4URest.Server.Data.Migrations
                 {
                     b.HasOne("Table4URest.Shared.Domain.Customer", "Customer")
                         .WithMany("Reservations")
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Table4URest.Shared.Domain.Restaurant", "Restaurant")
                         .WithMany("Reservations")
-                        .HasForeignKey("RestaurantID")
+                        .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -832,15 +826,21 @@ namespace Table4URest.Server.Data.Migrations
                 {
                     b.HasOne("Table4URest.Shared.Domain.LocationFilter", "LocationFilter")
                         .WithMany()
-                        .HasForeignKey("LocationFilterId");
+                        .HasForeignKey("LocationFilterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Table4URest.Shared.Domain.PriceFilter", "PriceFilter")
                         .WithMany()
-                        .HasForeignKey("PriceFilterId");
+                        .HasForeignKey("PriceFilterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Table4URest.Shared.Domain.ServeFilter", "ServeFilter")
                         .WithMany()
-                        .HasForeignKey("ServeFilterId");
+                        .HasForeignKey("ServeFilterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("LocationFilter");
 
@@ -853,13 +853,13 @@ namespace Table4URest.Server.Data.Migrations
                 {
                     b.HasOne("Table4URest.Shared.Domain.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Table4URest.Shared.Domain.Staff", "Staff")
                         .WithMany()
-                        .HasForeignKey("StaffID")
+                        .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

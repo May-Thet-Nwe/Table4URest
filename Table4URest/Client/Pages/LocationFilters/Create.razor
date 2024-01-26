@@ -1,0 +1,36 @@
+﻿@page "/locationfilters/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+
+<h3 class="card-title">Create New Postal Code</h3>
+<hr />
+<br />
+
+<EditForm Model="@locationfilter" OnValidSubmit="CreateLocationFilter">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label>Postal Code:</label>
+        <div>
+            <InputNumber @bind-Value="@locationfilter.PostalCode" class="form-control" />
+            <ValidationMessage For="@(()=> locationfilter.PostalCode)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Postal Code
+    </button>
+</EditForm>
+
+@code {
+    LocationFilter locationfilter = new LocationFilter();
+
+
+
+    private async Task CreateLocationFilter()
+    {
+        await _client.PostAsJsonAsync(Endpoints.LocationFiltersEndpoint, locationfilter);
+        _navManager.NavigateTo("/locationfilters/");
+    }
+}
