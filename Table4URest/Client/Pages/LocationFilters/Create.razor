@@ -7,21 +7,7 @@
 <hr />
 <br />
 
-<EditForm Model="@locationfilter" OnValidSubmit="CreateLocationFilter">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="form-group">
-        <label>Postal Code:</label>
-        <div>
-            <InputNumber @bind-Value="@locationfilter.PostalCode" class="form-control" />
-            <ValidationMessage For="@(()=> locationfilter.PostalCode)" />
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-success btn-block">
-        Create Postal Code
-    </button>
-</EditForm>
+<FormComponent ButtonText="Create LocationFilter" locationfilter="locationfilter" OnValidSubmit="@CreateLocationFilter" />
 
 @code {
     LocationFilter locationfilter = new LocationFilter();

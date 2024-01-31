@@ -1,7 +1,9 @@
 ﻿@inject NavigationManager Navigation
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Table4URestaurant</a>
+        <span class="navbar-brand" style="font-family: 'Copperplate', fantasy; font-size: 1.5rem;">
+            &#128591;&#127996;Table4U &#128024; <!-- Elephant -->
+        </span>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,42 +45,50 @@
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="locationfilters">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> LocationFilters
+                <span class="oi oi-map-marker" aria-hidden="true"></span> LocationFilters
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="pricefilters">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> PriceFilters
+                <span class="oi oi-dollar" aria-hidden="true"></span> PriceFilters
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="servefilters">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> ServeFilters
+                <span class="oi oi-clock" aria-hidden="true"></span> ServeFilters
             </NavLink>
         </div>
+
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="restaurants">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Restaurants
+                <span class="oi oi-location" aria-hidden="true"></span> Restaurants
             </NavLink>
         </div>
+
+
+
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="customers">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Customers
+                <span class="oi oi-people" aria-hidden="true"></span>  Customers
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="reviews">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Reviews
+                <span class="oi oi-comment-square" aria-hidden="true"></span>  Reviews
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="reservations">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Reservations
+                <span class="oi oi-book" aria-hidden="true"></span>  Reservations
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="staffs">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Staffs
+                <span class="oi oi-briefcase" aria-hidden="true"></span> Staffs
             </NavLink>
         </div>
     </nav>

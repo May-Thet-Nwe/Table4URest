@@ -13,12 +13,12 @@ namespace Table4URest.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReservationController : ControllerBase
+    public class ReservationsController : ControllerBase
     {
         //private readonly ApplicationDbContext _context;
         private readonly IUnitOfWork _unitOfWork;
         //public LocationFiltersController(ApplicationDbContext context)
-        public ReservationController(IUnitOfWork unitOfWork)
+        public ReservationsController(IUnitOfWork unitOfWork)
         {
             //_context = context;
             _unitOfWork = unitOfWork;
@@ -29,7 +29,11 @@ namespace Table4URest.Server.Controllers
         //public async Task<ActionResult<IEnumerable<LocationFilter>>> GetLocationFilters()
         public async Task<IActionResult> GetReservations()
         {
-            var reservations = await _unitOfWork.Reservations.GetAll();
+            var reservations = await _unitOfWork.Reservations.GetAll(includes: q=>q.Include(x=>x.Restaurant).Include(x=>x.Customer)) ;
+            if (reservations == null)
+            {
+                return NotFound();
+            }
             return Ok(reservations);
         }
 

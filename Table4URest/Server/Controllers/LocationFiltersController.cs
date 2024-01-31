@@ -30,6 +30,10 @@ namespace Table4URest.Server.Controllers
         public async Task<IActionResult> GetLocationFilters()
         {
           var locationfilters = await _unitOfWork.LocationFilters.GetAll();
+            if (locationfilters == null)
+            {
+                return NotFound();
+            }
             return Ok(locationfilters);
         }
 
@@ -90,7 +94,7 @@ namespace Table4URest.Server.Controllers
         {
           await _unitOfWork.LocationFilters.Insert(locationfilter);
           await _unitOfWork.Save(HttpContext);
-            return CreatedAtAction("GetLocationFilter", new { id = locationfilter.Id }, locationfilter);
+          return CreatedAtAction("GetLocationFilter", new { id = locationfilter.Id }, locationfilter);
         }
 
         // DELETE: api/LocationFilters/5

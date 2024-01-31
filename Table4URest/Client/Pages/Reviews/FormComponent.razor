@@ -1,0 +1,96 @@
+﻿@inject HttpClient _client
+
+<EditForm Model="@review" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+ 
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Customer: </label>
+            <div>
+                <InputSelect @bind-Value="review.CustomerId" class="form-control">
+                    <option value="">-- Select Customer --</option>
+                        @if (Customers != null)
+                        {
+                            foreach (var customer in Customers)
+                            {
+                                <option value="@customer.Id">@customer.Name - @customer.Email</option>
+                            }
+                        }
+                </InputSelect>
+                <ValidationMessage For="@(() => review.CustomerId)" />
+            </div>
+        </div>
+ 
+        <div class="form-group">
+            <label>Restaurant: </label>
+            <div>
+                <InputSelect @bind-Value="review.RestaurantId" class="form-control">
+                <option value="">-- Select Restaurant --</option>
+                    @if (Restaurants != null)
+                    {
+                        foreach (var restaurant in Restaurants)
+                        {
+                            <option value="@restaurant.Id">@restaurant.Name - @restaurant.Address - @restaurant.ServeFilter.ServeRange</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => review.RestaurantId)" />
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>Rating: </label>
+            <div class="star-rating">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span class="oi oi-star @(i <= selectedStars ? "text-warning" : "text-secondary")"
+                          @onclick="@(() => SetSelectedStars(i))"></span>
+                }
+            </div>
+            <ValidationMessage For="@(() => selectedStars)" />
+        </div>
+
+        <!-- Add an input field for user to enter the desired number of stars -->
+        <div class="form-group">
+            <label for="inputStars">Enter Number of Stars: </label>
+            <input type="number" id="inputStars" @bind="selectedStars" min="0" max="5" />
+        </div>
+    </fieldset>
+   
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+                    @ButtonText
+        </button>
+    }
+ 
+    <BackToList Target="reviews" />
+
+    
+</EditForm>
+ 
+@code {
+
+    private int selectedStars = 0;
+
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Review? review { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+ 
+    private IList<Restaurant>? Restaurants;
+    private IList<Customer>? Customers;
+
+    
+    protected async override Task OnInitializedAsync()
+    {
+        Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
+        Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
+    }
+    private void SetSelectedStars(int stars)
+    {
+        // Update the review's rating property based on the user input
+        review.Reviews = stars;
+    }
+}

@@ -8,11 +8,12 @@ namespace Table4URest.Shared.Domain
 {
     public class Review: BaseDomainModel
     {
-        public string? Reviews { get; set; }
-        public int StaffId { get; set; }
-        public virtual Staff? Staff { get; set; }
+       
+        public int Reviews { get; set; }
         public int CustomerId { get; set; }
         public virtual Customer? Customer { get; set; }
+        public int RestaurantId { get; set; }
+        public virtual Restaurant? Restaurant { get; set; }
         public virtual List<Reservation>? Reservations { get; set; }
     }
 }

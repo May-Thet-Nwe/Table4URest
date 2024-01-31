@@ -30,6 +30,10 @@ namespace Table4URest.Server.Controllers
         public async Task<IActionResult> GetStaffs()
         {
             var staffs = await _unitOfWork.Staffs.GetAll();
+            if (staffs == null)
+            {
+                return NotFound();
+            }
             return Ok(staffs);
         }
 

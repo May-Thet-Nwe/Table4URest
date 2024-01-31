@@ -7,33 +7,7 @@
 <hr />
 <br />
 
-<EditForm Model="@staff" OnValidSubmit="CreateStaff">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="form-group">
-        <label>Name:</label>
-        <div>
-            <InputText @bind-Value="@staff.Name" class="form-control" />
-            <ValidationMessage For="@(()=> staff.Name)" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Position: </label>
-        <div>
-            <InputSelect @bind-Value="@staff.Position" class="form-control">
-                <option value="">Select Position</option>
-                <option value="Manager">Manager</option>
-                <option value="Liaison Officer">Liaison Officer</option>
-                <option value="Reservationist">Reservationist</option>
-            </InputSelect>
-            <ValidationMessage For="@(() => staff.Position)" />
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-success btn-block">
-        Create Staff
-    </button>
-</EditForm>
+<FormComponent ButtonText="Create Staff" staff="staff" OnValidSubmit="@CreateStaff" />
 
 @code {
     Staff staff = new Staff();

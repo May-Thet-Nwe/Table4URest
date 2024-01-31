@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3 class="card-title"> Serves</h3>
 <br />
@@ -12,11 +14,11 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="servefiltersTable">
         <thead>
             <tr>
                 <th>Serve Range</th>
-                <th>Actions</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -25,17 +27,7 @@ else
                 <tr>
                     <td>@servefilter.ServeRange</td>
                     
-                    <td>
-                        <a href="/servefilters/view/@servefilter.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <a href="/servefilters/edit/@servefilter.Id" class="btn btn-warning">
-                            <span class="oi oi-pencil"></span>
-                        </a>
-                        <button class="btn btn-danger" @onclick="@(()=>Delete(servefilter.Id))">
-                            <span class="oi oi-delete"></span>
-                        </button>
-                    </td>
+                   
                 </tr>
             }
         </tbody>
@@ -44,9 +36,10 @@ else
 
 @code {
     private List<ServeFilter>? ServeFilters;
-
+    private bool isDataTableInitialized=false;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         ServeFilters = await _client.GetFromJsonAsync<List<ServeFilter>>($"{Endpoints.ServeFiltersEndpoint}");
     }
 
@@ -62,6 +55,15 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#servefiltersTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#servefiltersTable");
     }
 }
 

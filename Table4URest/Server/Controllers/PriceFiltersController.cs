@@ -30,6 +30,10 @@ namespace Table4URest.Server.Controllers
         public async Task<IActionResult> GetPriceFilters()
         {
             var pricefilters = await _unitOfWork.PriceFilters.GetAll();
+            if (pricefilters == null)
+            {
+                return NotFound();
+            }
             return Ok(pricefilters);
         }
 

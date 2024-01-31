@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3 class="card-title"> Customers</h3>
 <br/>
@@ -18,7 +20,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="customersTable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -53,9 +55,10 @@ else
 
 @code {
     private List<Customer>? Customers;
-
+    private bool isDataTableInitialized = false;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
     }
 
@@ -71,5 +74,15 @@ else
                 await OnInitializedAsync();
             }
         }
+
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#customersTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#customersTable");
     }
 }

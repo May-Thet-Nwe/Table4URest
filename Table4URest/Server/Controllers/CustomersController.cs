@@ -29,7 +29,12 @@ namespace Table4URest.Server.Controllers
         //public async Task<ActionResult<IEnumerable<LocationFilter>>> GetLocationFilters()
         public async Task<IActionResult> GetConstomers()
         {
+            
             var customers = await _unitOfWork.Customers.GetAll();
+            if (customers == null)
+            {
+                return NotFound();
+            }
             return Ok(customers);
         }
 

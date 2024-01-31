@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3 class="card-title"> Restaurants</h3>
 <br />
@@ -20,10 +22,11 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="restaurantsTable">
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Menu Picture</th>
                 <th>Address</th>
                 <th>Postal Code</th>
                 <th>Contact</th>
@@ -37,6 +40,16 @@ else
             {
                 <tr>
                     <td>@restaurant.Name</td>
+                    <td>                        
+                        @if (restaurant.menuPic != null && restaurant.menuPic.Length > 0)
+                        {
+                            <img src="data:image/png;base64,@Convert.ToBase64String(restaurant.menuPic)" alt="Menu Picture" style="max-width: 100px; max-height: 100px;" />
+                        }
+                        else
+                        {
+                            <span>No Menu Picture</span>
+                        }                     
+                    </td>
                     <td>@restaurant.Address</td>
                     <td>@restaurant.LocationFilter.PostalCode</td>
                     <td>@restaurant.Contact</td>
@@ -62,9 +75,10 @@ else
 
 @code {
     private List<Restaurant>? Restaurants;
-
+    private bool isDataTableInitialized = false;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
     }
 
@@ -80,6 +94,15 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#restaurantsTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#restaurantsTable");
     }
 }
 

@@ -31,6 +31,8 @@ namespace Table4URest.Server.Data
             builder.ApplyConfiguration(new LocationFilterSeedConfiguration());
             builder.ApplyConfiguration(new ServeFilterSeedConfiguration());
             builder.ApplyConfiguration(new PriceFilterSeedConfiguration());
+            builder.ApplyConfiguration(new StaffSeedConfiguration());
+
         }
 
     }

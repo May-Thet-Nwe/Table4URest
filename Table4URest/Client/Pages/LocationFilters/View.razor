@@ -1,0 +1,14 @@
+﻿@page "/locationfilters/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3>View Location</h3>
+<FormComponent locationfilter="locationfilter" Disabled="true" />
+@code {
+    [Parameter] public int id { get; set; }
+    LocationFilter? locationfilter = new LocationFilter();
+    protected async override Task OnParametersSetAsync()
+    {
+        locationfilter = await
+        _client.GetFromJsonAsync<LocationFilter>($"{Endpoints.LocationFiltersEndpoint}/{id}");
+    }
+}

@@ -7,7 +7,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Table4URest.Server</title>
+    <title>
+        @ViewData["Title"] - Table4U Application
+    </title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/Identity/lib/bootstrap/dist/css/bootstrap.css" />
@@ -20,12 +22,19 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/Identity/css/site.css" asp-append-version="true" />
     </environment>
+    <style>
+        body{
+            background-color: #ffdb58;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" href="~/">Table4URest.Server</a>
+                <a class="navbar-brand" href="~/">
+                    Table4U Application
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +58,10 @@
         </nav>
     </header>
 
+
     <div class="container">
+        <img src="~/css/Table4U.jpg" style="width:100px; height:100px; left:0px; top:0px; position:absolute" />
+
         <partial name="_CookieConsentPartial" optional />
         <main role="main" class="pb-1">
             @RenderBody()
@@ -57,7 +69,7 @@
     </div>
     <footer class="footer border-top pl-3 text-muted">
         <div class="container">
-        &copy; 2023 - Table4URest.Server
+        &copy; 2023 - Table4URest Application
             @{
                 var foundPrivacy = Url.Page("/Privacy", new { area = "" });
             }

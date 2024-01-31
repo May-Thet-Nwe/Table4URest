@@ -30,6 +30,10 @@ namespace Table4URest.Server.Controllers
         public async Task<IActionResult> GetServeFilters()
         {
             var servefilters = await _unitOfWork.ServeFilters.GetAll();
+            if (servefilters == null)
+            {
+                return NotFound();
+            }
             return Ok(servefilters);
         }
 

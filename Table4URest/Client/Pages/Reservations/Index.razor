@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3 class="card-title">Restaurant Reservations</h3>
 <br />
@@ -16,7 +18,7 @@
 }
 else
 {
-    <table class=" table table-responsive">
+    <table class=" table table-responsive" id="reservationsTable">
         <thead>
             <tr>
                 <th>Reservation Id</th>
@@ -38,7 +40,7 @@ else
                     <td>@reservation.Restaurant.Name</td>
                     <td>@reservation.AdultNum</td>
                     <td>@reservation.ChildNum</td>
-                    <td>@reservation.DateCreated.Date.ToString("dd MMMM yyyy")</td>
+                    <td>@reservation.DateTime.ToString("dd MMMM yyyy")</td>
                     
                     <td>
                         <a href="/reservations/view/@reservation.Id" class=" btn btn-primary">
@@ -59,9 +61,10 @@ else
 
 @code {
     private List<Reservation>? Reservations;
-
+    private bool isDataTableInitialized = false;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Reservations = await _client.GetFromJsonAsync<List<Reservation>>($"{Endpoints.ReservationsEndpoint}");
     }
 
@@ -78,6 +81,15 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#reservationsTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#reservationsTable");
     }
 }
 

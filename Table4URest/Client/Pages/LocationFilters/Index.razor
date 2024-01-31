@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3 class="card-title"> Locations</h3>
 <br />
@@ -18,7 +20,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="locationfiltersTable">
         <thead>
             <tr>
                 <th>Postal Code</th>
@@ -50,9 +52,10 @@ else
 
 @code {
     private List<LocationFilter>? LocationFilters;
-
+    private bool isDataTableInitialized = false;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         LocationFilters = await _client.GetFromJsonAsync<List<LocationFilter>>($"{Endpoints.LocationFiltersEndpoint}");
     }
 
@@ -68,5 +71,14 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#locationfiltersTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#locationfiltersTable");
     }
 }

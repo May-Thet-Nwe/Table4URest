@@ -60,8 +60,8 @@ namespace Table4URest.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Contact = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -183,6 +183,24 @@ namespace Table4URest.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Staffs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Staffs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -294,8 +312,9 @@ namespace Table4URest.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    menuPic = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Contact = table.Column<int>(type: "int", nullable: false),
                     PriceFilterId = table.Column<int>(type: "int", nullable: false),
                     LocationFilterId = table.Column<int>(type: "int", nullable: false),
@@ -329,39 +348,14 @@ namespace Table4URest.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Staffs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RestaurantID = table.Column<int>(type: "int", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Staffs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Staffs_Restaurants_RestaurantID",
-                        column: x => x.RestaurantID,
-                        principalTable: "Restaurants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Reviews = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StaffId = table.Column<int>(type: "int", nullable: false),
+                    Reviews = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
+                    RestaurantId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -377,9 +371,9 @@ namespace Table4URest.Server.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reviews_Staffs_StaffId",
-                        column: x => x.StaffId,
-                        principalTable: "Staffs",
+                        name: "FK_Reviews_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -428,8 +422,8 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PostalCode", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8014), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8025), 520824, "System" },
-                    { 2, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8027), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8027), 460218, "System" }
+                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1668), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1683), 520824, "System" },
+                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1690), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1691), 460218, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -437,9 +431,9 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PriceRange", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8574), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8574), "Budget", "System" },
-                    { 2, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8575), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8576), "Normal", "System" },
-                    { 3, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8577), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8578), "Fancy", "System" }
+                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3076), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3078), "Budget", "System" },
+                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3080), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3080), "Normal", "System" },
+                    { 3, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3082), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3083), "Fancy", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -447,9 +441,18 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ServeRange", "ServeTime", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8393), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8394), "Breakfast", 0, "System" },
-                    { 2, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8395), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8396), "Lunch", 0, "System" },
-                    { 3, "System", new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8397), new DateTime(2024, 1, 26, 14, 46, 31, 571, DateTimeKind.Local).AddTicks(8398), "Dinner", 0, "System" }
+                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2746), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2748), "Breakfast", 0, "System" },
+                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2753), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2754), "Lunch", 0, "System" },
+                    { 3, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2755), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2756), "Dinner", 0, "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Staffs",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "Position", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3357), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3358), "May", "Manager", "System" },
+                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3360), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3361), "Adlina", "Reservationist", "System" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -563,14 +566,9 @@ namespace Table4URest.Server.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_StaffId",
+                name: "IX_Reviews_RestaurantId",
                 table: "Reviews",
-                column: "StaffId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Staffs_RestaurantID",
-                table: "Staffs",
-                column: "RestaurantID");
+                column: "RestaurantId");
         }
 
         /// <inheritdoc />
@@ -604,6 +602,9 @@ namespace Table4URest.Server.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
+                name: "Staffs");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -614,9 +615,6 @@ namespace Table4URest.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Customers");
-
-            migrationBuilder.DropTable(
-                name: "Staffs");
 
             migrationBuilder.DropTable(
                 name: "Restaurants");

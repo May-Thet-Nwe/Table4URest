@@ -1,0 +1,30 @@
+﻿@inject HttpClient _client
+<EditForm Model="@locationfilter" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled = "@Disabled">
+        <div class="form-group">
+            <label>Postal Code:</label>
+            <div>
+                <InputNumber @bind-Value="@locationfilter.PostalCode" class="form-control" />
+                <ValidationMessage For="@(()=> locationfilter.PostalCode)" />
+            </div>
+        </div>
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+            @ButtonText
+        </button>
+    }
+    
+    <BackToList Target="locationfilters" />
+
+</EditForm>
+
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public LocationFilter? locationfilter { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}
