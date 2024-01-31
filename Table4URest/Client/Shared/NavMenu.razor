@@ -1,14 +1,17 @@
 ﻿@inject NavigationManager Navigation
 <div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <span class="navbar-brand" style="font-family: 'Copperplate', fantasy; font-size: 1.5rem;">
-            &#128591;&#127996;Table4U &#128024; <!-- Elephant -->
+    <div class="container-fluid" style="position: relative;">
+        <img src="./css/Table4U logo 1.jpg" style="width: 50px; height: 50px; position: absolute; left: 0; top: 0;" />
+        <span class="navbar-brand" style="font-family: 'Copperplate', fantasy; font-size: 1.5rem; margin-left: 60px;">
+            Table4U
         </span>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
+
+
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
         <AuthorizeView>

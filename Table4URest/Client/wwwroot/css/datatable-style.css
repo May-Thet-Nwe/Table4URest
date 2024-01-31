@@ -1,8 +1,8 @@
-﻿#app .dataTables_wrapper thread th {
+﻿#app .dataTables_wrapper thead th {
     background-color: #f8bb21;
     color: black;
 }
 
-#app .dataTables_wrapper tbody tr:hover{
+#app .dataTables_wrapper tbody tr:hover {
     background-color: #f8f7af;
 }

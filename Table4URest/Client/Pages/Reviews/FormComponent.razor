@@ -54,7 +54,7 @@
         <!-- Add an input field for user to enter the desired number of stars -->
         <div class="form-group">
             <label for="inputStars">Enter Number of Stars: </label>
-            <input type="number" id="inputStars" @bind="selectedStars" min="0" max="5" />
+            <input type="number" id="inputStars" @bind="@review.Reviews" min="0" max="5" />
         </div>
     </fieldset>
    
@@ -90,6 +90,7 @@
     }
     private void SetSelectedStars(int stars)
     {
+
         // Update the review's rating property based on the user input
         review.Reviews = stars;
     }

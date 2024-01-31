@@ -66,6 +66,7 @@ else
     {
         _interceptor.MonitorEvent();
         Reservations = await _client.GetFromJsonAsync<List<Reservation>>($"{Endpoints.ReservationsEndpoint}");
+
     }
 
     async Task Delete(int reservationId)
