@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Table4URest.Shared.Domain
 {
-    public class Reservation: BaseDomainModel
+    public class Reservation : BaseDomainModel
     {
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Adult number should not be negative.")]
@@ -23,6 +23,5 @@ namespace Table4URest.Shared.Domain
         public virtual Customer? Customer { get; set; }
         public int RestaurantId { get; set; }
         public virtual Restaurant? Restaurant { get; set; }
-        
     }
 }

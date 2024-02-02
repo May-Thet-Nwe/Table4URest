@@ -422,8 +422,8 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PostalCode", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1668), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1683), 520824, "System" },
-                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1690), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(1691), 460218, "System" }
+                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8877), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8890), 520824, "System" },
+                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892), 460218, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -431,9 +431,9 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PriceRange", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3076), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3078), "Budget", "System" },
-                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3080), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3080), "Normal", "System" },
-                    { 3, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3082), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3083), "Fancy", "System" }
+                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9401), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9402), "Budget", "System" },
+                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403), "Normal", "System" },
+                    { 3, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405), "Fancy", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -441,9 +441,9 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ServeRange", "ServeTime", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2746), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2748), "Breakfast", 0, "System" },
-                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2753), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2754), "Lunch", 0, "System" },
-                    { 3, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2755), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(2756), "Dinner", 0, "System" }
+                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9217), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9218), "Breakfast", 0, "System" },
+                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219), "Lunch", 0, "System" },
+                    { 3, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221), "Dinner", 0, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -451,8 +451,8 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "Position", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3357), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3358), "May", "Manager", "System" },
-                    { 2, "System", new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3360), new DateTime(2024, 1, 31, 14, 30, 29, 549, DateTimeKind.Local).AddTicks(3361), "Adlina", "Reservationist", "System" }
+                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9591), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9592), "May", "Manager", "System" },
+                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9593), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9594), "Adlina", "Reservationist", "System" }
                 });
 
             migrationBuilder.CreateIndex(

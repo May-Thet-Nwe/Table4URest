@@ -40,8 +40,7 @@ else
                     <td>@reservation.Restaurant.Name</td>
                     <td>@reservation.AdultNum</td>
                     <td>@reservation.ChildNum</td>
-                    <td>@reservation.DateTime.ToString("dd MMMM yyyy")</td>
-                    
+                    <td>@reservation.DateTime.ToString("dd MMMM yyyy HH:mm")</td>
                     <td>
                         <a href="/reservations/view/@reservation.Id" class=" btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -93,4 +92,3 @@ else
         js.InvokeVoidAsync("DataTablesDispose", "#reservationsTable");
     }
 }
-

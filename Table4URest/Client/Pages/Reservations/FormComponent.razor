@@ -2,7 +2,7 @@
 <EditForm Model="@reservation" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <fieldset disabled = "@Disabled">
+    <fieldset disabled="@Disabled">
         <div class="form-group">
             <label>Customer: </label>
 
@@ -55,10 +55,12 @@
             </div>
         </div>
 
+        <!-- Add the min attribute to restrict selection to current and future dates -->
         <div class="form-group">
             <label>Date Time: </label>
             <div>
-                <InputDate @bind-Value="@reservation.DateTime" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <!-- Set the min attribute to the current date and time in the required format -->
+                <input type="datetime-local" @bind="reservation.DateTime" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                 <ValidationMessage For="@(() => reservation.DateTime)" />
             </div>
         </div>
@@ -72,7 +74,7 @@
     }
 
 
-    
+
     <BackToList Target="reservations" />
 </EditForm>
 

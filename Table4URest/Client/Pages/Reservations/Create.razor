@@ -6,6 +6,8 @@
 <hr />
 <br />
 
+
+
 <FormComponent ButtonText="Create Reservation" reservation="reservation" OnValidSubmit="@CreateReservation" />
 
 @code {
@@ -23,6 +25,8 @@
 
     private async Task CreateReservation()
     {
+        // DateTime combinedDateTime = new DateTime(reservation.Date.Year, reservation.Date.Month, reservation.Date.Day, reservation.Time, 0, 0);     // Assign the combined DateTime to the reservation object    
+        // reservation.DateTime = combinedDateTime;
         await _client.PostAsJsonAsync(Endpoints.ReservationsEndpoint, reservation);
         _navManager.NavigateTo("/reservations/");
     }
