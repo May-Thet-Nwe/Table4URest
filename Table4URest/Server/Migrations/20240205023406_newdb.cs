@@ -189,7 +189,7 @@ namespace Table4URest.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -422,8 +422,8 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PostalCode", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8877), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8890), 520824, "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892), 460218, "System" }
+                    { 1, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2691), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2704), 520824, "System" },
+                    { 2, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2706), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2706), 460218, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -431,9 +431,9 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PriceRange", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9401), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9402), "Budget", "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403), "Normal", "System" },
-                    { 3, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405), "Fancy", "System" }
+                    { 1, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3203), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3203), "Budget", "System" },
+                    { 2, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3205), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3205), "Normal", "System" },
+                    { 3, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3206), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3207), "Fancy", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -441,9 +441,9 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ServeRange", "ServeTime", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9217), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9218), "Breakfast", 0, "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219), "Lunch", 0, "System" },
-                    { 3, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221), "Dinner", 0, "System" }
+                    { 1, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3029), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3030), "Breakfast", 0, "System" },
+                    { 2, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3031), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3032), "Lunch", 0, "System" },
+                    { 3, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3033), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3034), "Dinner", 0, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -451,8 +451,8 @@ namespace Table4URest.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "Position", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9591), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9592), "May", "Manager", "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9593), new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9594), "Adlina", "Reservationist", "System" }
+                    { 1, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3374), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3375), "May", "Manager", "System" },
+                    { 2, "System", new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3376), new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3377), "Adlina", "Reservationist", "System" }
                 });
 
             migrationBuilder.CreateIndex(

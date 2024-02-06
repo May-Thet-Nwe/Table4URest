@@ -7,7 +7,7 @@ namespace Table4URest.Client.Static
 {
     public static class Endpoints
     {
-        private static readonly string Prefix = "api";
+        private static readonly string Prefix = "api";      /*constructing api endpoints for each entity*/
 
         public static readonly string CustomersEndpoint = $"{Prefix}/customers";
         public static readonly string LocationFiltersEndpoint = $"{Prefix}/locationfilters";

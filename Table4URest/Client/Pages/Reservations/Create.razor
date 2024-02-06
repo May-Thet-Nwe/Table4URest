@@ -17,7 +17,7 @@
     private IList<Customer>? Customers;
 
 
-    protected async override Task OnInitializedAsync()
+    protected async override Task OnInitializedAsync() /* get lists from server */
     {
         Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
         Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
@@ -25,8 +25,7 @@
 
     private async Task CreateReservation()
     {
-        // DateTime combinedDateTime = new DateTime(reservation.Date.Year, reservation.Date.Month, reservation.Date.Day, reservation.Time, 0, 0);     // Assign the combined DateTime to the reservation object    
-        // reservation.DateTime = combinedDateTime;
+
         await _client.PostAsJsonAsync(Endpoints.ReservationsEndpoint, reservation);
         _navManager.NavigateTo("/reservations/");
     }

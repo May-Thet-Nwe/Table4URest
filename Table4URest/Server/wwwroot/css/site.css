@@ -81,3 +81,14 @@ body {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+

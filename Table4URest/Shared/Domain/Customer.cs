@@ -14,13 +14,13 @@ namespace Table4URest.Shared.Domain
         public string? Name { get; set; }
 
         [Required]
-        [DataType(DataType.EmailAddress, ErrorMessage ="Email address is not valid")]
+        [DataType(DataType.EmailAddress, ErrorMessage ="Email address is not valid")]       /*need @gmail.com*/
         [EmailAddress]
         public string? Email { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"(6|8|9)\d{7}", ErrorMessage ="Contact number is not valid")]
+        [RegularExpression(@"(6|8|9)\d{7}", ErrorMessage ="Contact number is not valid")]      /*starts with 6,8,9 (8 digits)*/
         public int Contact { get; set; }
         public virtual List<Reservation>? Reservations { get; set; }
 

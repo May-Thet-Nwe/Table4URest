@@ -6,15 +6,15 @@
 <FormComponent ButtonText="Update" OnValidSubmit="EditCustomer" customer="customer" />
 
 @code {
-    [Parameter] public int id { get; set; }
+    [Parameter] public int id { get; set; }  /* Route parameter */
     Customer? customer = new Customer();
 
-    protected async override Task OnParametersSetAsync()
+    protected async override Task OnParametersSetAsync()  /* get data from server */
     {
         customer = await _client.GetFromJsonAsync<Customer>($"{Endpoints.CustomersEndpoint}/{id}");
     }
 
-    async Task EditCustomer()
+    async Task EditCustomer()  /* put request at endpoint */
     {
         await _client.PutAsJsonAsync($"{Endpoints.CustomersEndpoint}/{id}", customer);
         _navManager.NavigateTo("/customers/");

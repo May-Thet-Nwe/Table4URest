@@ -12,6 +12,7 @@ namespace Table4URest.Shared.Domain
         [Required]
         [StringLength(100, ErrorMessage = "Name is too long.")]
         public string? Name { get; set; }
+        [Required(ErrorMessage = "Please provide a position")]
         public string? Position { get; set; }
         
     }

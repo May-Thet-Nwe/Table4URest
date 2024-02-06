@@ -60,22 +60,23 @@ else
 
 @code {
     private List<Reservation>? Reservations;
-    private bool isDataTableInitialized = false;
+    private bool isDataTableInitialized = false;  /* Not initialized */
     protected async override Task OnInitializedAsync()
-    {
+    {  /* Get reservation list from server */
         _interceptor.MonitorEvent();
         Reservations = await _client.GetFromJsonAsync<List<Reservation>>($"{Endpoints.ReservationsEndpoint}");
 
     }
 
     async Task Delete(int reservationId)
-    {
+    { /* Delete request from server */   
         if (Reservations != null)
         {
             var reservation = Reservations.First(q => q.Id == reservationId);
+            // confirm with js confirm dialog
             var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {reservation.Id}?");
 
-            if (confirm)
+            if (confirm)                        /* when confirm, DELETE request from server, refresh list */
             {
                 await _client.DeleteAsync($"{Endpoints.ReservationsEndpoint}/{reservationId}");
                 await OnInitializedAsync();
@@ -83,7 +84,7 @@ else
         }
     }
     protected async override Task OnAfterRenderAsync(bool firstRender)
-    {
+    { /* invoke adddatatable on the id selector */
         await js.InvokeVoidAsync("AddDataTable", "#reservationsTable");
     }
 

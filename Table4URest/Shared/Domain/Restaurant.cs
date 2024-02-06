@@ -13,6 +13,7 @@ namespace Table4URest.Shared.Domain
         [StringLength(100, ErrorMessage = "Name is too long.")]
         public string? Name { get; set; }
         public string? Address { get; set; }
+      
         public byte[] menuPic { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

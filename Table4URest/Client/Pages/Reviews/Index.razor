@@ -38,35 +38,8 @@ else
                     <td>@review.Id</td>
                     <td>@review.Customer.Name</td>
                     <td>@review.Restaurant.Name</td>
-                    <td>@DisplayStars(review.Reviews)</td>
-                    @* <td>@DisplayStars(review.Reviews)</td>  *@
-                   @*  <td>
-                        @{
-                            for (int i = 1; i <= review.Reviews; i++)
-                            {
-                                <span class="oi oi-star text-warning"></span>
-                            }
-                            for (int i = review.Reviews + 1; i <= 5; i++)
-                            {
-                                <span class="oi oi-star text-secondary"></span>
-                            }
-                        }
-                    </td> *@
-                    @* <td>
-                        @{
-                            for (int i = 1; i <= 5; i++)
-                            {
-                                <span class="oi oi-star @(i <= selectedStars ? "text-warning" : "text-secondary")"
-                                      @onclick="@(() => SetSelectedStars(i))"></span>
-                            }
-                        }
-                    </td> *@
-
-
-
-
-
-
+                    <td>@DisplayStars(review.Reviews)</td>      @* Reviews as paramter for the function *@
+                   
 
                     <td>
                         <a href="/reviews/view/@review.Id" class=" btn btn-primary">
@@ -122,16 +95,16 @@ else
     }
     MarkupString DisplayStars(int rating) 
     { 
-        var starIcons = new List<string>(); 
-        for (int i = 1; i <= rating; i++) 
+        var starIcons = new List<string>();                                     /* List to store starIcons */
+        for (int i = 1; i <= rating; i++)                                        /* rating as Reviews (less or equal than reviews) */
         { 
-            starIcons.Add("<span class=\"oi oi-star text-warning\"></span>"); 
+            starIcons.Add("<span class=\"oi oi-star text-warning\"></span>");   /* filled the starIcons */
         } 
-        for (int i = rating + 1; i <= 5; i++) 
+        for (int i = rating + 1; i <= 5; i++)                                   /* Add empty stars up to 5 */
         {
             starIcons.Add("<span class=\"oi oi-star text-secondary\"></span>"); 
         } 
-        return new MarkupString(string.Join("", starIcons)); 
+        return new MarkupString(string.Join("", starIcons));                        /* starIcons list to single string and return MarkupString */
     }
 
       

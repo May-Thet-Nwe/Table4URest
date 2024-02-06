@@ -440,8 +440,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8877),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8890),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2691),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2704),
                             PostalCode = 520824,
                             UpdatedBy = "System"
                         },
@@ -449,8 +449,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(8892),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2706),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(2706),
                             PostalCode = 460218,
                             UpdatedBy = "System"
                         });
@@ -488,8 +488,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9401),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9402),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3203),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3203),
                             PriceRange = "Budget",
                             UpdatedBy = "System"
                         },
@@ -497,8 +497,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9403),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3205),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3205),
                             PriceRange = "Normal",
                             UpdatedBy = "System"
                         },
@@ -506,8 +506,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9405),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3206),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3207),
                             PriceRange = "Fancy",
                             UpdatedBy = "System"
                         });
@@ -690,8 +690,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9217),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9218),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3029),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3030),
                             ServeRange = "Breakfast",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -700,8 +700,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9219),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3031),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3032),
                             ServeRange = "Lunch",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -710,8 +710,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9221),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3033),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3034),
                             ServeRange = "Dinner",
                             ServeTime = 0,
                             UpdatedBy = "System"
@@ -741,6 +741,7 @@ namespace Table4URest.Server.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Position")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -755,8 +756,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9591),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9592),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3374),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3375),
                             Name = "May",
                             Position = "Manager",
                             UpdatedBy = "System"
@@ -765,8 +766,8 @@ namespace Table4URest.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9593),
-                            DateUpdated = new DateTime(2024, 2, 1, 16, 5, 6, 910, DateTimeKind.Local).AddTicks(9594),
+                            DateCreated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3376),
+                            DateUpdated = new DateTime(2024, 2, 5, 10, 34, 5, 872, DateTimeKind.Local).AddTicks(3377),
                             Name = "Adlina",
                             Position = "Reservationist",
                             UpdatedBy = "System"

@@ -39,20 +39,8 @@
             </div>
         </div>
     
-        @* <div class="form-group">
-            <label>Rating: </label>
-            <div class="star-rating">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    <span class="oi oi-star @(i <= selectedStars ? "text-warning" : "text-secondary")"
-                          @onclick="@(() => SetSelectedStars(i))"></span>
-                }
-            </div>
-            <ValidationMessage For="@(() => selectedStars)" />
-        </div> *@
 
-        <!-- Add an input field for user to enter the desired number of stars -->
-        <div class="form-group">
+        <div class="form-group">            @* label for input field using id from 0 to 5*@
             <label for="inputStars">Enter Number of Stars: </label>
             <input type="number" id="inputStars" @bind="@review.Reviews" min="0" max="5" />
         </div>

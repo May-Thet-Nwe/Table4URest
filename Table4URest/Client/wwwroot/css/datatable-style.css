@@ -1,8 +1,9 @@
-﻿#app .dataTables_wrapper thead th {
+﻿#app .dataTables_wrapper thead th { /*tableheader color and background*/
     background-color: #f8bb21;
     color: black;
 }
 
-#app .dataTables_wrapper tbody tr:hover {
+#app .dataTables_wrapper tbody tr:hover {/* to change the back colour of table row when hover*/
     background-color: #f8f7af;
 }
+    

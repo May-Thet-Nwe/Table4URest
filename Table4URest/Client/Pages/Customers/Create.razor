@@ -7,16 +7,14 @@
 <hr />
 <br />
 
-<FormComponent ButtonText="Create Customer" customer="customer" OnValidSubmit="@CreateCustomer" />
+<FormComponent ButtonText="Create Customer" customer="customer" OnValidSubmit="@CreateCustomer" /> @* when submit, it functions as CreateCust method *@
 
 @code {
-    Customer customer = new Customer();
-
-    
+    Customer customer = new Customer();  /* Create instance */
 
     private async Task CreateCustomer()
     {
-        await _client.PostAsJsonAsync(Endpoints.CustomersEndpoint, customer);
+        await _client.PostAsJsonAsync(Endpoints.CustomersEndpoint, customer); /*  Post request to endpoints in JSON */
         _navManager.NavigateTo("/customers/");
     }
 }

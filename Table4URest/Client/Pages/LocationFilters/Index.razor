@@ -31,8 +31,7 @@ else
             @foreach (var locationfilter in LocationFilters)
             {
                 <tr>
-                    <td>@locationfilter.PostalCode</td>
-                    
+                    <td><a href="@GetGoogleMapsLink(locationfilter)" target="_blank">@locationfilter.PostalCode</a></td>
                     <td>
                         <a href="/locationfilters/view/@locationfilter.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -80,5 +79,11 @@ else
     public void Dispose()
     {
         js.InvokeVoidAsync("DataTablesDispose", "#locationfiltersTable");
+    }
+    string GetGoogleMapsLink(LocationFilter locationfilter)
+    {
+        string address = $"{locationfilter.PostalCode}, {locationfilter.PostalCode}";
+        string googleMapsUrl = $"https://www.google.com/maps?q={Uri.EscapeDataString(address)}";
+        return googleMapsUrl;
     }
 }

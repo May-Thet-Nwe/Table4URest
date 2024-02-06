@@ -51,7 +51,10 @@ else
                         }                     
                     </td>
                     <td>@restaurant.Address</td>
-                    <td>@restaurant.LocationFilter.PostalCode</td>
+
+                    @* open googlemap in new tab *@
+
+                    <td><a href="@GetGoogleMapsLink(restaurant)" target="_blank">@restaurant.LocationFilter.PostalCode</a></td>     
                     <td>@restaurant.Contact</td>
                     <td>@restaurant.PriceFilter.PriceRange</td>
                     <td>@restaurant.ServeFilter.ServeRange</td>
@@ -103,6 +106,12 @@ else
     public void Dispose()
     {
         js.InvokeVoidAsync("DataTablesDispose", "#restaurantsTable");
+    }
+    string GetGoogleMapsLink(Restaurant restaurant)
+    {
+        string address = $"{restaurant.LocationFilter.PostalCode}, {restaurant.LocationFilter.PostalCode}";
+        string googleMapsUrl = $"https://www.google.com/maps?q={Uri.EscapeDataString(address)}";        /* generates url by adding address */
+        return googleMapsUrl;
     }
 }
 
